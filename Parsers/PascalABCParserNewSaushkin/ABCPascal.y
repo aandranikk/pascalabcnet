@@ -47,7 +47,7 @@
 %token <op> tkAssign tkPlusEqual tkMinusEqual tkMultEqual tkDivEqual tkMinus tkPlus tkSlash tkStar tkStarStar tkEqual tkGreater tkGreaterEqual tkLower tkLowerEqual 
 %token <op> tkNotEqual tkCSharpStyleOr tkArrow tkOr tkXor tkAnd tkDiv tkMod tkShl tkShr tkNot tkAs tkIn tkIs tkImplicit tkExplicit tkAddressOf tkDeref
 %token <id> tkDirectiveName tkIdentifier 
-%token <stn> tkStringLiteral tkFormatStringLiteral tkAsciiChar
+%token <stn> tkRegexLiteral tkStringLiteral tkFormatStringLiteral tkAsciiChar
 %token <id> tkAbstract tkForward tkOverload tkReintroduce tkOverride tkVirtual tkExtensionMethod 
 %token <ex> tkInteger tkFloat tkHex 
 
@@ -3321,6 +3321,8 @@ literal
         { 
 			$$ = NewLiteral($1 as literal_const_line);
         }
+	| tkRegexLiteral
+		{ $$ = $1 as regex; }
     | tkFormatStringLiteral
         {
             if (parsertools.build_tree_for_formatter)

@@ -400,6 +400,15 @@ namespace PascalABCSavParser
             return proc_list;
         }
 
+        public literal create_regex_const(string text, SourceContext sc)
+        {
+            literal lt;
+            text = ReplaceSpecialSymbols(text.Substring(1, text.Length - 2));
+            lt = new regex(text);
+            lt.source_context = sc;
+            return lt;
+        }
+
         public literal create_string_const(string text, SourceContext sc)
         {
             literal lt;

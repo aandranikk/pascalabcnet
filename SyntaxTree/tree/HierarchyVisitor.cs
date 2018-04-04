@@ -5,19 +5,19 @@ namespace PascalABCCompiler.SyntaxTree
 	public class HierarchyVisitor: AbstractVisitor
 	{
 
-		public virtual void pre_do_visit(syntax_tree_node _syntax_tree_node)
-		{
-		}
-
-		public virtual void post_do_visit(syntax_tree_node _syntax_tree_node)
-		{
-		}
-
 		public virtual void pre_do_visit(expression _expression)
 		{
 		}
 
 		public virtual void post_do_visit(expression _expression)
+		{
+		}
+
+		public virtual void pre_do_visit(syntax_tree_node _syntax_tree_node)
+		{
+		}
+
+		public virtual void post_do_visit(syntax_tree_node _syntax_tree_node)
 		{
 		}
 
@@ -1781,11 +1781,12 @@ namespace PascalABCCompiler.SyntaxTree
 		{
 		}
 
-		public override void visit(syntax_tree_node _syntax_tree_node)
+		public virtual void pre_do_visit(regex _regex)
 		{
-			DefaultVisit(_syntax_tree_node);
-			pre_do_visit(_syntax_tree_node);
-			post_do_visit(_syntax_tree_node);
+		}
+
+		public virtual void post_do_visit(regex _regex)
+		{
 		}
 
 		public override void visit(expression _expression)
@@ -1793,6 +1794,13 @@ namespace PascalABCCompiler.SyntaxTree
 			DefaultVisit(_expression);
 			pre_do_visit(_expression);
 			post_do_visit(_expression);
+		}
+
+		public override void visit(syntax_tree_node _syntax_tree_node)
+		{
+			DefaultVisit(_syntax_tree_node);
+			pre_do_visit(_syntax_tree_node);
+			post_do_visit(_syntax_tree_node);
 		}
 
 		public override void visit(statement _statement)
@@ -3682,6 +3690,13 @@ namespace PascalABCCompiler.SyntaxTree
 			visit(double_question_node.left);
 			visit(double_question_node.right);
 			post_do_visit(_double_question_node);
+		}
+
+		public override void visit(regex _regex)
+		{
+			DefaultVisit(_regex);
+			pre_do_visit(_regex);
+			post_do_visit(_regex);
 		}
 	}
 

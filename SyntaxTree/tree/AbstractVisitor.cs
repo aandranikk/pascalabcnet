@@ -8,14 +8,14 @@ namespace PascalABCCompiler.SyntaxTree
 		{
 		}
 
-		public virtual void visit(syntax_tree_node _syntax_tree_node)
-		{
-			DefaultVisit(_syntax_tree_node);
-		}
-
 		public virtual void visit(expression _expression)
 		{
 			DefaultVisit(_expression);
+		}
+
+		public virtual void visit(syntax_tree_node _syntax_tree_node)
+		{
+			DefaultVisit(_syntax_tree_node);
 		}
 
 		public virtual void visit(statement _statement)
@@ -1118,7 +1118,11 @@ namespace PascalABCCompiler.SyntaxTree
 			DefaultVisit(_double_question_node);
 		}
 
-    }
+		public virtual void visit(regex _regex)
+		{
+			DefaultVisit(_regex);
+		}
+	}
 
 
 }

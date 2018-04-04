@@ -21,9 +21,9 @@ namespace PascalABCCompiler.SyntaxTree
 			switch(node_class_number)
 			{
 				case 0:
-					return new syntax_tree_node();
-				case 1:
 					return new expression();
+				case 1:
+					return new syntax_tree_node();
 				case 2:
 					return new statement();
 				case 3:
@@ -464,6 +464,8 @@ namespace PascalABCCompiler.SyntaxTree
 					return new sugared_addressed_value();
 				case 221:
 					return new double_question_node();
+				case 222:
+					return new regex();
 			}
 			return null;
 		}
@@ -480,6 +482,17 @@ namespace PascalABCCompiler.SyntaxTree
 				return null;
 			}
 		}
+
+		public void visit(expression _expression)
+		{
+			read_expression(_expression);
+		}
+
+		public void read_expression(expression _expression)
+		{
+			read_declaration(_expression);
+		}
+
 
 		public void visit(syntax_tree_node _syntax_tree_node)
 		{
@@ -506,17 +519,6 @@ namespace PascalABCCompiler.SyntaxTree
 				}
 				_syntax_tree_node.source_context = new SourceContext(ssyy_beg, ssyy_end);
 			}
-		}
-
-
-		public void visit(expression _expression)
-		{
-			read_expression(_expression);
-		}
-
-		public void read_expression(expression _expression)
-		{
-			read_declaration(_expression);
 		}
 
 
@@ -3918,6 +3920,25 @@ namespace PascalABCCompiler.SyntaxTree
 			read_addressed_value_funcname(_double_question_node);
 			_double_question_node.left = _read_node() as expression;
 			_double_question_node.right = _read_node() as expression;
+		}
+
+
+		public void visit(regex _regex)
+		{
+			read_regex(_regex);
+		}
+
+		public void read_regex(regex _regex)
+		{
+			read_literal(_regex);
+			if (br.ReadByte() == 0)
+			{
+				_regex.Value = null;
+			}
+			else
+			{
+				_regex.Value = br.ReadString();
+			}
 		}
 
 	}

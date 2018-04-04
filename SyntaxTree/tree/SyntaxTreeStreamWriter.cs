@@ -16,9 +16,21 @@ namespace PascalABCCompiler.SyntaxTree
 		public BinaryWriter bw;
 
 
-		public void visit(syntax_tree_node _syntax_tree_node)
+		public void visit(expression _expression)
 		{
 			bw.Write((Int16)0);
+			write_expression(_expression);
+		}
+
+		public void write_expression(expression _expression)
+		{
+			write_declaration(_expression);
+		}
+
+
+		public void visit(syntax_tree_node _syntax_tree_node)
+		{
+			bw.Write((Int16)1);
 			write_syntax_tree_node(_syntax_tree_node);
 		}
 
@@ -52,18 +64,6 @@ namespace PascalABCCompiler.SyntaxTree
 					bw.Write(_syntax_tree_node.source_context.end_position.column_num);
 				}
 			}
-		}
-
-
-		public void visit(expression _expression)
-		{
-			bw.Write((Int16)1);
-			write_expression(_expression);
-		}
-
-		public void write_expression(expression _expression)
-		{
-			write_declaration(_expression);
 		}
 
 
@@ -6136,6 +6136,27 @@ namespace PascalABCCompiler.SyntaxTree
 			{
 				bw.Write((byte)1);
 				_double_question_node.right.visit(this);
+			}
+		}
+
+
+		public void visit(regex _regex)
+		{
+			bw.Write((Int16)222);
+			write_regex(_regex);
+		}
+
+		public void write_regex(regex _regex)
+		{
+			write_literal(_regex);
+			if (_regex.Value == null)
+			{
+				bw.Write((byte)0);
+			}
+			else
+			{
+				bw.Write((byte)1);
+				bw.Write(_regex.Value);
 			}
 		}
 

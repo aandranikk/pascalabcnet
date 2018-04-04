@@ -34,6 +34,7 @@ CHARACTERNUM '[^'\n]'
 INTNUM {Digit}+
 FLOATNUM {INTNUM}\.{INTNUM}
 EXPNUM ({INTNUM}\.)?{INTNUM}[eE][+\-]?{INTNUM}
+REGEXNUM \/.+\/
 STRINGNUM \'([^\'\n]|\'\')*\'
 FORMATSTRINGNUM \$\'([^\'\n]|\'\')*\'
 HEXNUM ${HexDigit}+
@@ -440,6 +441,13 @@ UNICODEARROW \x890
   currentLexLocation = CurrentLexLocation;
   yylval.ex = parsertools.create_double_const(yytext,currentLexLocation);
   return (int)Tokens.tkFloat;
+}
+
+{REGEXNUM} {
+  yylval = new Union();
+  currentLexLocation = CurrentLexLocation;
+  yylval.stn = parsertools.create_regex_const(yytext,currentLexLocation); 
+  return (int)Tokens.tkRegexLiteral;
 }
 
 {STRINGNUM} { 
