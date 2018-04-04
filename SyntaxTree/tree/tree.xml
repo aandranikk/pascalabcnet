@@ -2855,6 +2855,22 @@
         <TagIndices />
       </Tags>
     </SyntaxNode>
+    <SyntaxNode Name="regex" BaseName="literal">
+      <Fields>
+        <ExtendedField Name="Value" Type="string" CreateVariable="false" DeleteVariable="false" />
+      </Fields>
+      <Methods />
+      <Tags>
+        <CategoryIndices>
+          <CategoryIndex>0</CategoryIndex>
+          <CategoryIndex>0</CategoryIndex>
+        </CategoryIndices>
+        <TagIndices>
+          <TagIndex>1</TagIndex>
+          <TagIndex>2</TagIndex>
+        </TagIndices>
+      </Tags>
+    </SyntaxNode>
   </SyntaxNodes>
   <Settings>
     <FileName>Tree.cs</FileName>
@@ -2872,8 +2888,8 @@
     <FilterCategory Name="General">
       <Tags>
         <Tag Name="Операторы" ReferenceCount="27" />
-        <Tag Name="Выражения" ReferenceCount="36" />
-        <Tag Name="Константы" ReferenceCount="15" />
+        <Tag Name="Выражения" ReferenceCount="37" />
+        <Tag Name="Константы" ReferenceCount="16" />
         <Tag Name="Списки" ReferenceCount="23" />
         <Tag Name="Типы" ReferenceCount="12" />
         <Tag Name="Описания" ReferenceCount="23" />
@@ -2893,6 +2909,7 @@
       <HelpData Key=".MapHelper" Value="" />
       <HelpData Key=".Name" Value="" />
       <HelpData Key=".UnknownID" Value="" />
+      <HelpData Key=".Value" Value="Шаблон" />
       <HelpData Key=".Vds" Value="" />
       <HelpData Key="._realType" Value="" />
       <HelpData Key=".aloneparam" Value="" />
@@ -3830,6 +3847,8 @@
       <HelpData Key="record_type_parts.variant_part" Value="" />
       <HelpData Key="ref_type" Value="" />
       <HelpData Key="ref_type.pointed_to" Value="" />
+      <HelpData Key="regex" Value="" />
+      <HelpData Key="regex.Value" Value="Шаблон" />
       <HelpData Key="repeat_node" Value="Цикл с постусловием (repeat)" />
       <HelpData Key="repeat_node.expr" Value="Условие завершения цикла" />
       <HelpData Key="repeat_node.statements" Value="Тело цикла" />

@@ -55,6 +55,7 @@
     <Compile Include="SugarVisitors\DoubleQuestionDesugarVisitor.cs" />
     <Compile Include="SugarVisitors\LoopDesugarVisitor.cs" />
     <Compile Include="SugarVisitors\QuestionPointDesugarVisitor.cs" />
+    <Compile Include="SugarVisitors\RegexDesugarVisitor.cs" />
     <Compile Include="SugarVisitors\SliceDesugarVisitor.cs" />
     <Compile Include="SugarVisitors\TupleVisitor.cs" />
     <Compile Include="YieldVisitors\ObjectCopier\ObjectCopier.cs" />
